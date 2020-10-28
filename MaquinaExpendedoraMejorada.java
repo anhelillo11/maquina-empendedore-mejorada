@@ -10,7 +10,6 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
-    private String maquinaConPremio;
     private int numMaxBilletes;
     private int contador;
     
@@ -19,13 +18,12 @@ public class MaquinaExpendedoraMejorada {
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, String premio, int max) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, int max) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
-        maquinaConPremio = premio;
         numMaxBilletes = max;
         contador = 0;
     }
@@ -67,6 +65,7 @@ public class MaquinaExpendedoraMejorada {
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
         double descuento =  (precioBillete *10.0)/100;
+        int maquinaConPremio = 0;
         if (contador < numMaxBilletes) {
             if (cantidadDeDineroQueFalta <= 0) { 
                 // Simula la impresion de un billete
@@ -81,10 +80,12 @@ public class MaquinaExpendedoraMejorada {
                 totalDineroAcumulado = totalDineroAcumulado + precioBillete;
                 // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
                 balanceClienteActual = balanceClienteActual - precioBillete;
-                if (maquinaConPremio == "premio") {
-                System.out.println("Tiene un descuento del " + descuento + " del coste del billete para compras en el comercio que elija");
-               }
-               contador = contador + 1;
+                if (maquinaConPremio = 3) {
+                    System.out.println("Tiene un descuento del " + descuento + " del coste del billete para compras en el comercio que elija");
+                    maquinaConPremio = 0;
+                }
+                contador = contador + 1;
+                maquinaConPremio = maquinaConPremio + 1;
             }  
             else {
                 System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
